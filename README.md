@@ -6,7 +6,7 @@ This has allowed the training to be performed on a single consumer graph (RTX 30
 
 Available on Hugging Face: https://huggingface.co/garrachonr/llamaDos
 
-The training has been performed following the original data structure of the Llama2 paper, so it is recommended to follow the same structure for inference:
+The training has been performed following the original data structure of the Llama2 paper, so it is recommended to follow the same structure for inference and re-training:
 
 ```python
 <s>[INST] <<SYS>>
@@ -15,6 +15,8 @@ The training has been performed following the original data structure of the Lla
 
 {{ user_msg_1 }} [/INST] {{ model_answer_1 }} </s><s>[INST] {{ user_msg_2 }} [/INST] {{ model_answer_1 }} </s>
 ```
+
+# Inference
 
 In order to use this model:
 
@@ -42,6 +44,19 @@ result = pipe(text)
 print(result[0]['generated_text'])
 ```
 
+# Finetuning
+
+To recreate the obtained results you can follow this command:
+
+```python
+python trl/examples/scripts/sft_trainer.py \
+    --model_name meta-llama/Llama-2-7b-chat-hf \
+    --dataset_name garrachonr/DB-Spanish-Llama2 \
+    --load_in_4bit \
+    --use_peft \
+    --batch_size 12 \
+    --gradient_accumulation_steps 32
+```
 
 This work is funded by the Comunidad de Madrid through the call Research Grants for Young Investigators from Universidad Politécnica de Madrid (GENIUS:APOYO-JOVENES-21-TAXTYC-32-K61X37), and supported by the following projects: European Commission through Project ASTOUND (101071191–-HORIZON-EIC-2021-PATHFINDERCHALLENGES-01) and BEWORD (PID2021-126061OB-C43) funded by
 MCIN/AEI/10.13039/501100011033 and, as appropriate, by “ERDF A way of making Europe”, by the
