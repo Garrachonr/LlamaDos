@@ -1,10 +1,10 @@
-# llamaDos
+# LlamaDos
 
 LlamaDos is a model oriented to have conversations in Spanish. It results from a finetuning of the Llama2-7b model by Meta using various optimization techniques such as LoRa, quantization, gradient accumulation and much more.
 
 This has allowed the training to be performed on a single consumer graph (RTX 3090). More specifically, more than 250,000 conversational data were used and the training took approximately 140 hours.
 
-Available on Hugging Face: https://huggingface.co/garrachonr/llamaDos
+Available on Hugging Face: https://huggingface.co/garrachonr/LlamaDos
 
 The training has been performed following the original data structure of the Llama2 paper, so it is recommended to follow the same structure for inference and re-training:
 
