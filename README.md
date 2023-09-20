@@ -29,7 +29,7 @@ base_model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.float16,
     device_map=device_map,
 )
-tokenizer = AutoTokenizer.from_pretrained("garrachonr/llamaDos", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("garrachonr/LlamaDos", trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "right"
 
